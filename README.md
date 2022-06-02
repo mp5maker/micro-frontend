@@ -125,3 +125,9 @@ const const moduleFederationOptions = {
 
 - We need to create a very simple adapter, on how we will take the data
 - We also need to mention where it will be mounted
+
+## Use single-spa
+
+- Single SPA helps the workflow faster
+- We have 10 different servers and we dont want run all the servers one by one
+- It is simple to `docker-compose`
