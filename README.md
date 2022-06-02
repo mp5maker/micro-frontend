@@ -129,5 +129,9 @@ const const moduleFederationOptions = {
 ## Use single-spa
 
 - Single SPA helps the workflow faster
-- We have 10 different servers and we dont want run all the servers one by one
+- We have 10 different servers and we dont want run all the servers one by one, same goes for tests
 - It is simple to `docker-compose`
+- Must be deployed to some server
+- Install import map overrides
+- It provides a UI, shows all the in browser modules
+- Change the url for that particular in browser module # change the url
