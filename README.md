@@ -116,6 +116,7 @@ const const moduleFederationOptions = {
 - Then use it for something else
 
 
-## Use it with JWT
+## How to use with the global store
 
-- 
+- Share the state very easily with reactive programming
+- Use `RXJS` to transfer the states if necessary
