@@ -6,6 +6,21 @@
 - Templates
 - Pages
 
+## Previous Implementations
+
+**Scenario One**
+* Using `npm packages` as the common place to keep the codes
+* Then it is shared between apps
+* Kind of what `lerna` [better versioning] or `yarn workspace` do
+
+
+**Scenario Two**
+* Instead of keeping the components under a app
+* It is been separated in a separate `component` app
+* It is used to create `s3 artifacts`
+* Shim library connected to main apps also updates itself from the artifacts and provides to other apps
+* Implementation complexity
+
 ## Webpack
 
 - Microfrontend works well with webpack 5
