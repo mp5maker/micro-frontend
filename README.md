@@ -108,3 +108,14 @@ const const moduleFederationOptions = {
 },
 }
 ```
+
+## What if the landing app crashes?
+
+- We can configure to run the section app from the older deployment as a backup/fallback strategy
+- We can use a Error Boundary, `getDerivedStateFromError`
+- Then use it for something else
+
+
+## Use it with JWT
+
+- 

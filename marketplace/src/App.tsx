@@ -1,9 +1,10 @@
+import Footer from "landing/Footer";
 import React from "react";
 import ReactDOM from "react-dom";
+import SafeComponent from "./components/SafeComponent";
+import "./index.scss";
 
 const Header = React.lazy(() => import("landing/Header"));
-import Footer from "landing/Footer";
-import "./index.scss";
 
 const COMPANY_NAME = "Texada";
 
@@ -13,7 +14,9 @@ const App = () => (
       <h1>Market Place App</h1>
     </header>
     <React.Suspense fallback={<div>Header Loading ....</div>}>
-      <Header companyName={COMPANY_NAME} />
+      <SafeComponent>
+        <Header companyName={COMPANY_NAME} />
+      </SafeComponent>
     </React.Suspense>
     <Footer companyName={COMPANY_NAME} />
   </div>
