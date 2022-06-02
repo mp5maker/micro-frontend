@@ -9,17 +9,22 @@
 ## Previous Implementations
 
 **Scenario One**
-* Using `npm packages` as the common place to keep the codes
-* Then it is shared between apps
-* Kind of what `lerna` [better versioning] or `yarn workspace` do
 
+- Using `npm packages` as the common place to keep the codes
+- Then it is shared between apps
+- Kind of what `lerna` [better versioning] or `yarn workspace` do
 
 **Scenario Two**
-* Instead of keeping the components under a app
-* It is been separated in a separate `component` app
-* It is used to create `s3 artifacts`
-* Shim library connected to main apps also updates itself from the artifacts and provides to other apps
-* Implementation complexity
+
+- Instead of keeping the components under a app
+- It is been separated in a separate `component` app
+- It is used to create `s3 artifacts`
+- Shim library connected to main apps also updates itself from the artifacts and provides to other apps
+- Implementation complexity
+
+**Scenario Three**
+
+- Using iFrames and global objects
 
 ## Webpack
 
@@ -75,5 +80,31 @@ const const moduleFederationOptions = {
     landing: "landing@http://localhost:3001/remoteEntry.js",
   },
   exposes: {},
+}
+```
+
+## Asynchronous Loading
+
+- Using `React.lazy(() => {})`
+- We can use the Suspense
+
+## Webpack shares and manages react for us
+
+- configuration react: singletone, means there will be only one react
+
+
+```javascript
+const const moduleFederationOptions = {
+  shared: {
+  ...deps,
+  react: {
+    singleton: true,
+    requiredVersion: deps.react,
+  },
+  "react-dom": {
+    singleton: true,
+    requiredVersion: deps["react-dom"],
+  },
+},
 }
 ```
