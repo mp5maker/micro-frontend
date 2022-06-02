@@ -1,1 +1,64 @@
-# micro-frontend
+# Micro Frontend
+
+- Atoms
+- Molecules
+- Organisms
+- Templates
+- Pages
+
+## Webpack
+
+- Microfrontend works well with webpack 5
+- Module Federation works in webpack 5 and gels with it properly
+
+```bash
+npx create-mf-app
+```
+
+---
+
+## Module Creation
+
+- Create two module federation app `landing` and the other is `marketplace`
+- Host for the `landing` is `3001` and host for the `marketplace` is `3002`
+- Then run follow the `npm install` in each of the directories
+
+## Create Components
+
+- Go to the `landing` app
+- Create two files Header.tsx and Footer.tsx
+
+## Make it available from the Landing App
+
+- Expose the files by mentioning in the `webpack.config.js`
+- name => is the alias name of the app
+- filename => is the one that exposes the file
+- exposes => we can define the files that we want to expose
+
+```javascript
+const moduleFederationOptions = {
+  name: "landing",
+  filename: "remoteEntry.js",
+  remotes: {},
+  exposes: {
+    "./Header": "./src/components/Header/index.tsx",
+    "./Footer": "./src/components/Footer/index.tsx",
+  },
+};
+```
+
+## Use the exposed components in the Marketplace App
+
+- Add the remoteEntry file in the `remotes` section and give another alias according to our needs
+- Therefore we can use the `Header` or `Footer` components in `landing/Header` and `landing/Footer`
+
+```javascript
+const const moduleFederationOptions = {
+  name: "marketplace",
+  filename: "remoteEntry.js",
+  remotes: {
+    landing: "landing@http://localhost:3001/remoteEntry.js",
+  },
+  exposes: {},
+}
+```
